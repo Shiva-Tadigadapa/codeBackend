@@ -11,7 +11,14 @@ const app = express();
 // app.use(bodyParser.json());
 app.use(express.json());
 
-app.use(cors());
+app.use(cors(
+  {
+    origin: 
+    ['https://kokokokoko-d299.onrender.com/'
+    ,'https://demo-form-done.netlify.app/'],
+    credentials: true,
+  }
+));
 
 app.use('/api', userRoutes);
 
@@ -28,9 +35,9 @@ const connect = () => {
 
 
 
+connect();
 const port =  3000;
 
 app.listen(port, () => {
-  connect();
   console.log(`Server connected and listening on port ${port}`);
 });
